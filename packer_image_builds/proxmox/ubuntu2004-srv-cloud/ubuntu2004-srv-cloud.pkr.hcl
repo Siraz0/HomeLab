@@ -10,19 +10,19 @@ variable "proxmox_api_token_secret" {
   type        = string
 }
 
-source "proxmox" "ubuntu_20_04_server" {
+source "proxmox" "ubuntu2004-srv-cloud" {
  
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
     username = "${var.proxmox_api_token_id}"
     token = "${var.proxmox_api_token_secret}"
-    # (Optional) Skip TLS Verification
+
     insecure_skip_tls_verify = true
     
     # VM General Settings
     node = "shire"
     vm_id = "9000"
-    vm_name = "ubuntu-20.04-server"
+    vm_name = "ubuntu2004-srv-cloud"
     template_description = "Ubuntu_20.04_LTS_server cloud init template."
 
     # VM OS Settings
@@ -79,14 +79,14 @@ source "proxmox" "ubuntu_20_04_server" {
     # PACKER Autoinstall Settings
     http_directory = "http"
     # (Optional) Bind IP Address and Port
-    http_bind_address = "192.168.1.102"
+    http_bind_address = "172.27.167.125"
     http_port_min = 8802
     http_port_max = 8802
 
-    ssh_username = "sirazo"
+    ssh_username = "admin"
 
     # (Option 1) Add your Password here
-    ssh_password = "test"
+    ssh_password = "admin"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
     #ssh_private_key_file = "~/.ssh/id_rsa"
@@ -98,8 +98,8 @@ source "proxmox" "ubuntu_20_04_server" {
 # Build Definition to create the VM Template
 build {
 
-    name = "ubuntu-20.04-server"
-    sources = ["source.proxmox.ubuntu_20_04_server"]
+    name = "ubuntu2004-srv-cloud"
+    sources = ["source.proxmox.ubuntu2004-srv-cloud"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
