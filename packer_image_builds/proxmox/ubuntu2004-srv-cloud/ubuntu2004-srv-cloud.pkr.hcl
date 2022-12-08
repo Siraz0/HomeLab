@@ -95,6 +95,7 @@ source "proxmox" "ubuntu2004-srv-cloud" {
     ssh_timeout = "20m"
 }
 
+
 # Build Definition to create the VM Template
 build {
 
