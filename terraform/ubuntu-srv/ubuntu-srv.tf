@@ -17,7 +17,13 @@ resource "proxmox_vm_qemu" "ubuntu-srv" {
   disk {
     storage = "local-lvm"
     type    = "virtio"
-    size    = "20G"
+    size    = "${var.vm_ssd_root_size}G"
+  }
+
+  disk {
+    storage = "HDD"
+    type    = "virtio"
+    size    = "${var.vm_hdd_size}G"
   }
 
 

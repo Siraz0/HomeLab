@@ -32,3 +32,11 @@ variable "vm_ip" {
   type      = string
   sensitive = true
 }
+
+variable "vm_ssd_root_size" {
+  type = number
+}
+
+variable "vm_hdd_size" {
+  type = number
+}
