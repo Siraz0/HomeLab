@@ -11,5 +11,5 @@ services:
       - /home/admin/docker-data/ngnix-proxy-manager:/data
 networks:
   default:
-    external: true
-    name: rev-proxy
+    external:
+      name: public
