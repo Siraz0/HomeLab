@@ -1,0 +1,23 @@
+---
+version: '3'
+services:
+  heimdall:
+    image: linuxserver/heimdall:2.5.3
+    container_name: heimdall
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /home/admin/docker-data/heimdall/config:/config
+    environment:
+      - PGID=1000
+      - PUID=1000
+    networks:
+      - npm_proxy
+      - default
+networks:
+  default:
+    external:
+      name: npm_proxy
+    default:
+      driver: bridge

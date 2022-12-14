@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    container_name: 'rev_proxy_npm'
+    container_name: 'npm_proxy'
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
@@ -9,8 +9,10 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - /home/admin/docker-data/ngnix-proxy-manager:/data
+      - /home/admin/docker-data/npm_proxy:/data
+    networks:
+      - npm_proxy
 networks:
   default:
     external:
-      name: public
+      name: npm_proxy

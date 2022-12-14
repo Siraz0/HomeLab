@@ -1,0 +1,15 @@
+---
+version: '3.3'
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1.18.5
+    container_name: uptime-kuma
+    restart: unless-stopped
+    volumes:
+      - /home/admin/docker-data/uptime-kuma/config:/app/data
+    networks:
+      - npm_proxy
+networks:
+  default:
+    external:
+      name: npm_proxy

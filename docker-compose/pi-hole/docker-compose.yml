@@ -1,0 +1,24 @@
+---
+version: "3"
+services:
+  pi-hole:
+    container_name: pi-hole
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /home/admin/docker-data/etc/pihole/:/etc/pihole/
+      - /home/admin/docker-data/etc/dnsmasq.d/:/etc/dnsmasq.d/
+    restart: unless-stopped
+    networks:
+      - npm_proxy
+      - default
+networks:
+  default:
+    external:
+      name: npm_proxy
+  default:
+    driver: bridge
