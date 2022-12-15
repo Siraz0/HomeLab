@@ -17,5 +17,3 @@ networks:
   default:
     external:
       name: npm_proxy
-  default:
-    driver: bridge
