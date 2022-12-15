@@ -13,9 +13,6 @@ services:
       - /home/admin/docker-data/etc/pihole/:/etc/pihole/
       - /home/admin/docker-data/etc/dnsmasq.d/:/etc/dnsmasq.d/
     restart: unless-stopped
-    networks:
-      - npm_proxy
-      - default
 networks:
   default:
     external:

@@ -11,8 +11,6 @@ services:
       - /var/docker/jellyfin/config:/config
       - /var/docker/jellyfin/cache:/cache
       - /home/admin/docker-data/jellyfin:/data
-    networks:
-      - npm_proxy
 networks:
   default:
     external:

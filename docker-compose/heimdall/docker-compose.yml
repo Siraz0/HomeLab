@@ -12,9 +12,6 @@ services:
     environment:
       - PGID=1000
       - PUID=1000
-    networks:
-      - npm_proxy
-      - default
 networks:
   default:
     external:

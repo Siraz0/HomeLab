@@ -7,8 +7,6 @@ services:
     restart: unless-stopped
     volumes:
       - /home/admin/docker-data/uptime-kuma/config:/app/data
-    networks:
-      - npm_proxy
 networks:
   default:
     external:
