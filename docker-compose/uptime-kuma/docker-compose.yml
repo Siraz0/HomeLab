@@ -6,6 +6,7 @@ services:
     container_name: uptime-kuma
     restart: unless-stopped
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - /home/admin/docker-data/uptime-kuma/config:/app/data
 networks:
   default:
