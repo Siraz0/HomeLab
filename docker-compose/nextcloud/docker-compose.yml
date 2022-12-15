@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     image: mariadb:10.5
+    container_name: 'nextcloud_db'
     restart: always
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     volumes:
@@ -16,6 +17,7 @@ services:
 
   app:
     image: nextcloud
+    container_name: 'nextcloud_app'
     restart: always
     links:
       - db
