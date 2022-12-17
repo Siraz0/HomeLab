@@ -1,7 +1,7 @@
 resource "proxmox_vm_qemu" "ubuntu-srv" {
   name        = var.vm_name
   target_node = "shire"
-  clone       = "ubuntu2004-srv-cloud"
+  clone       = "ubuntu2004-srv-cloud${var.docker}"
   vmid        = var.vm_id
 
   agent  = 1

@@ -1,0 +1,34 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: en
+  ssh:
+    install-server: true
+    allow-pw: true
+    disable_root: true
+    ssh_quiet_keygen: true
+    allow_public_ssh_keys: true
+  packages:
+    - qemu-guest-agent
+    - sudo
+    - openssh-server
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+  user-data:
+    package_upgrade: false
+    timezone: Europe/Warsaw
+    users:
+      - name: admin
+        groups: [adm, sudo]
+        lock-passwd: false
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        #passwd: "admin"
+        # - or -
+        ssh_authorized_keys:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDfgBJMyC58lL3iZvyi1f4OXzcwBtM5U3YVhC9IfwBLDClA503+vPmu1nVA7cWz+mJWZFNomPfbax8cBQ64hVKdAcBQb4j639geUzF4eqCAYQu8IJ+6+YIxUV87Gb9001uwSL47E6aJ74cGkv4S8DoEmakK1t3TpTeNcotUxNMjGqdfNk7BlmHieH701nWN09Uc2uHoMx3+5y+JPLgYWYKJNa1aQLWOiCZevItdIDv54LKJuWMiob/aWTNveXXzjNvZGunwfRKOW1fQwJ3WSa+MnOhfrzDdzhpDq1KuP8+E4vctYpMUt74ZGMQ8vrbDtjNn1Bce7hnU5wdf3emShgLd0b7ryrU+CLa4sjLsPSCKTg6kh0FPM2S/pJ08Jdo4QofcOtlBJ+eeJSMil/u5PE2oQ1dBwBflXmLmj4HD4h1rUCD02UX+ulozJx1m2D3q6teh0hrARPUSEDi+pmxrhzua1xSAXYY852Tnv3E1T2hYNsjO6g0fE63a5XjiRuzs0f0= sirazo@devops"

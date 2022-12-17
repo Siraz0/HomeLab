@@ -40,3 +40,8 @@ variable "vm_ssd_root_size" {
 variable "vm_hdd_size" {
   type = number
 }
+
+variable "docker" {
+  type        = string
+  description = "Type '-docker' if you want docker installed. Leave empty if not."
+}
