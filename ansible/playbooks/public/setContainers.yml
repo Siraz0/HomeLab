@@ -1,0 +1,18 @@
+- name: Set public-facing containers
+  hosts: "public"
+  become: yes
+  tasks:
+  - name: Create docker network for rev proxy
+    ssh: sudo docker network create rev-proxy
+
+  - name: Set traefik service
+    ssh: cd /home/admin/docker/traefik && sudo docker-compose up -d --force-recreate
+
+  - name: Set vaultwarden service
+    ssh: cd /home/admin/docker/vaultwarden && sudo docker-compose up -d --force-recreate
+
+  - name: Set filebrowser service
+    ssh: cd /home/admin/docker/filebrowser && sudo docker-compose up -d --force-recreate
+
+  - name: Set nginx webservers service
+    ssh: cd /home/admin/docker/nginx && sudo docker-compose up -d --force-recreate

@@ -1,0 +1,23 @@
+- name: Get public-facing containers
+  hosts: "public"
+  become: yes
+  tasks:
+  - name: Copy traefik docker-compose files
+    copy: 
+      src: /home/admin/home-server_services/docker-compose/public/traefik
+      dest: /home/admin/docker
+
+  - name: Copy nginx docker-compose files
+    copy: 
+      src: /home/admin/home-server_services/docker-compose/public/nginx
+      dest: /home/admin/docker
+
+  - name: Copy filebrowser docker-compose files
+    copy: 
+      src: /home/admin/home-server_services/docker-compose/public/filebrowser
+      dest: /home/admin/docker
+
+  - name: Copy vaultwarden docker-compose files
+    copy: 
+      src: /home/admin/home-server_services/docker-compose/public/vaultwarden
+      dest: /home/admin/docker
